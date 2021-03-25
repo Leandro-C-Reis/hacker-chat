@@ -38,22 +38,15 @@ export default class EventManager {
         return new Map(functions);
     }
 
-    #emitComponentUpdate = (event, message) => {
-        this.componentEmitter.emit(
-            event,
-            message
-        )
-    }
-
     #updateUsersComponent = () => {
-        this.#emitComponentUpdate(
+        this.componentEmitter.emit(
             constants.events.app.STATUS_UPDATED,
             Array.from(this.#allUsers.values())
         );
     }
 
     #updateActivityLogComponent = (message) => {
-        this.#emitComponentUpdate(
+        this.componentEmitter.emit(
             constants.events.app.ACTIVITYLOG_UPDATED,
             message
         );
